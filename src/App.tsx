@@ -5,10 +5,10 @@ import { Skeleton } from './components/Skeleton';
 import { searchPokemon } from './utils/searchPokemons';
 
 function App() {
-  const [name, setName] = useState<string>("")
-  const [pokemon, setPokemon] = useState(null)
   const [loading, setLoading] = useState<boolean>(false)
+  const [name, setName] = useState<string>("")
   const [error, setError] = useState(null);
+  const [pokemon, setPokemon] = useState(null)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value)
@@ -17,7 +17,10 @@ function App() {
   const fetchPokemon = async () => {
     setLoading(true)
     searchPokemon(name.toLowerCase())
-      .then(pok => setPokemon(pok))
+      .then(pok => {
+        setError(null)
+        setPokemon(pok)
+      })
       .catch(err => {
         setError(err)
         setPokemon(null)
@@ -36,9 +39,13 @@ function App() {
     else setPokemon(null)
   }, [name]);
 
+  useEffect(() => {
+    console.log(pokemon, [pokemon])
+  })
+
   return (
     <div className="App relative w-full h-full">
-      <div className='flex justify-center items-center flex-col'>
+      <div className='flex justify-center items-center flex-col h-full'>
         <div className='m-4'>
             <label
               htmlFor="name"
