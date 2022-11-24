@@ -1,8 +1,17 @@
 # The Pokedex! 
 
-**Summary**: Be able to gracefully do http requests (like fetching pokemon data) for end-users and give them a good experience. Display appropriate views depending on the status of the http request and handle unexpected errors.
+This Repository connects the PokeAPI to an app built with React, vite and TypeScript!
+I used conventionnal commits!
 
-Fetch pokemons from this [API](https://pokeapi.co/)!
+## Installation:
+
+```
+$ npm install 
+```
+
+```
+$ npm run dev
+```
 
 ## Task description
 
